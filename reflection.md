@@ -31,8 +31,9 @@ Not for now.
 
 **b. Tradeoffs**
 
-- Describe one tradeoff your scheduler makes.
-- Why is that tradeoff reasonable for this scenario?
+The conflict detection only flags tasks that share an exact `time_of_day` string (e.g., two tasks both set to `"07:00"`). It does not check for overlapping durations — so a 30-minute task at `07:00` and a 20-minute task at `07:15` would actually overlap in real life, but the system would not catch it.
+
+This tradeoff is reasonable for this scenario because pet care tasks are rarely scheduled with minute-level precision. A pet owner thinks in rough time slots ("morning", "07:00"), not exact intervals. Implementing true duration-overlap detection would require tracking a running end time for each task and comparing ranges — adding complexity that isn't justified given how loosely these tasks are planned in practice. The simpler check catches the most common and obvious conflicts without overcomplicating the logic.
 
 ---
 
