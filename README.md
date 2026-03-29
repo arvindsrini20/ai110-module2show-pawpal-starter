@@ -22,6 +22,15 @@ Your final app should:
 - Display the plan clearly (and ideally explain the reasoning)
 - Include tests for the most important scheduling behaviors
 
+## Smarter Scheduling
+
+The scheduler goes beyond a simple task list with four intelligent features:
+
+- **Sorting by time** — tasks can be assigned an optional `time_of_day` (HH:MM) and sorted chronologically using a lambda key, so the plan reflects the actual flow of a pet owner's day.
+- **Filtering** — tasks can be filtered by pet name or completion status, making it easy to view only what's relevant (e.g., "show me only Mochi's pending tasks").
+- **Recurring tasks** — daily and weekly tasks auto-schedule their next occurrence when marked complete, using Python's `timedelta` to calculate the next due date. One-off (`as-needed`) tasks do not recur.
+- **Conflict detection** — the scheduler warns when two tasks share the same `time_of_day` slot, returning human-readable messages instead of crashing.
+
 ## Getting started
 
 ### Setup
