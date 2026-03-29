@@ -4,8 +4,13 @@
 
 **a. Initial design**
 
-- Briefly describe your initial UML design.
-- What classes did you include, and what responsibilities did you assign to each?
+- The initial design that I want to go with has 4 classes. Owner is for the owner name of the pet and the amount of time they have available in a day. Pet is for the pet name/species and how it is associated with an owner. Task stores a title, duration, and priority level. The final class is Scheduler which takes a list of tasks and an available time budget to create a daily plan.
+
+ 
+Owner — stores owner identity and the time constraint (total minutes available per day)
+Pet — stores pet identity and links back to its owner
+Task — the core data unit; describes what needs to be done, how long it takes, and how important it is
+Scheduler — the planning engine; filters and orders tasks so that high-priority tasks are scheduled first and the plan fits within the owner's available time
 
 **b. Design changes**
 
