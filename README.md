@@ -31,6 +31,26 @@ The scheduler goes beyond a simple task list with four intelligent features:
 - **Recurring tasks** — daily and weekly tasks auto-schedule their next occurrence when marked complete, using Python's `timedelta` to calculate the next due date. One-off (`as-needed`) tasks do not recur.
 - **Conflict detection** — the scheduler warns when two tasks share the same `time_of_day` slot, returning human-readable messages instead of crashing.
 
+## Testing PawPal+
+
+Run the full test suite with:
+
+```bash
+python -m pytest
+```
+
+The suite contains 11 automated tests covering:
+
+- **Task completion** — `mark_complete()` correctly flips the completed flag
+- **Task addition** — `add_task()` grows the pet's task list
+- **Sorting** — tasks are returned in chronological HH:MM order; untimed tasks fall last
+- **Recurrence** — daily tasks create a next occurrence due tomorrow; weekly tasks due in 7 days; `as-needed` tasks do not recur
+- **Conflict detection** — duplicate `time_of_day` slots produce a warning; distinct times produce none
+- **Edge cases** — an owner with no pets returns an empty plan; a task exceeding the time budget is marked skipped
+
+**Confidence level: ★★★★☆ (4/5)**
+The core scheduling behaviors are well covered. The main gap is duration-overlap conflict detection (two tasks whose time windows overlap but don't share an exact start time), which is noted as a known tradeoff in the design.
+
 ## Getting started
 
 ### Setup
